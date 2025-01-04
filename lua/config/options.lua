@@ -18,3 +18,6 @@ vim.cmd(
 )
 vim.cmd("autocmd TextChanged,TextChangedI * checktime")
 vim.cmd("autocmd CursorHold,CursorHoldI * checktime")
+
+-- show file name in the top
+vim.o.winbar = "%f"
