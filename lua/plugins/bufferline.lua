@@ -9,10 +9,6 @@ return {
       { "<leader>qq", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" }, -- delete next tab
       { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" }, -- navigate previous buffer
       { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" }, -- navigate next buffer
-      -- { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      -- { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      -- { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      -- { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
     opts = {
       options = {
