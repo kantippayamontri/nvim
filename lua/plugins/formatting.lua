@@ -18,7 +18,14 @@ return {
           markdown = { "prettier" },
           graphql = { "prettier" },
           lua = { "stylua" },
-          python = { "ruff" },
+          -- python = { "ruff" },
+          python = function(bufnr)
+            if require("conform").get_formatter_info("ruff_format", bufnr).available then
+              return { "ruff_format" }
+            else
+              return { "isort", "black" }
+            end
+          end,
         },
         format_on_save = {
           lsp_fallback = true,
