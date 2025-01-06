@@ -12,7 +12,7 @@ return {
           typescriptreact = { "prettier" },
           svelte = { "prettier" },
           css = { "prettier" },
-          html = { "prettier" },
+          html = { "djlint" }, --TODO: fix this for normal use
           json = { "prettier" },
           yaml = { "prettier" },
           markdown = { "prettier" },
@@ -27,7 +27,7 @@ return {
         },
       })
 
-      vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+      vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
           lsp_fallback = true,
           async = false,

@@ -11,6 +11,14 @@ vim.keymap.set("n", "'", function()
   vim.cmd.norm("gcc")
 end)
 
+-- vim.keymap.set("n", "<leader>fj", function()
+--   vim.cmd.norm("<leader>sg")
+-- end)
+--
+-- vim.keymap.set("n", "<leader>fJ", function()
+--   vim.cmd.norm("<leader>sG")
+-- end)
+
 -- for tab binding
 -- vim.keymap.set("n", "<S-t>", function()
 --   vim.cmd.norm(":tabn<CR>")
