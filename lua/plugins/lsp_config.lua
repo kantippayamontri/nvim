@@ -1,29 +1,4 @@
 return {
-
-  {
-    "williamboman/mason.nvim",
-    lazy = false,
-    config = function()
-      require("mason").setup({})
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    config = function()
-      require("mason-lspconfig").setup({
-        -- ensure_installed = { "lua_ls", "pylsp", "html", "tsserver", "cssmodules_ls" },
-        ensure_installed = {
-          "ts_ls",
-          "lua_ls",
-          "ruff",
-        },
-        opts = {
-          auto_install = true,
-        },
-      })
-    end,
-  },
   {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
