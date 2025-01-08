@@ -10,6 +10,7 @@ return {
           "lua",
           "vim",
           "python",
+          "dockerfile",
         },
         ignore_install = {},
         auto_install = true,

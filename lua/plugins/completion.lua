@@ -1,5 +1,5 @@
 return {
-  { "github/copilot.vim" },
+  { "github/copilot.vim", enabled = true },
   {
     "saghen/blink.cmp",
     lazy = false, -- lazy loading handled internally
@@ -47,6 +47,27 @@ return {
         -- default = { default = { "luasnip" } },
         -- optionally disable cmdline completions
         -- cmdline = {},
+      },
+      completion = {
+        accept = {
+          -- experimental auto-brackets support
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          draw = {
+            treesitter = { "lsp" },
+          },
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+          -- enabled = vim.g.ai_cmp,
+          enabled = false,
+        },
       },
 
       -- experimental signature help support

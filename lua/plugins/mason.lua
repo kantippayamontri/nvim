@@ -8,6 +8,9 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     lazy = false,
+    opts = {
+      ensure_installed = { "hadolint" },
+    },
     config = function()
       require("mason").setup({
         ui = {
@@ -33,6 +36,8 @@ return {
           "ts_ls",
           "lua_ls",
           "ruff",
+          "docker_compose_language_service",
+          "dockerls",
         },
         opts = {
           auto_install = true,

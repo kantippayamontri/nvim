@@ -22,6 +22,9 @@ return {
           },
         }, -- lua lsp servers
         ruff = {},
+        -- docker
+        dockerls = {},
+        docker_compose_language_service = {},
       },
     },
     config = function(_, opts)
