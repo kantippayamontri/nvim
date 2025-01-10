@@ -38,6 +38,7 @@ return {
           "ruff",
           "docker_compose_language_service",
           "dockerls",
+          "nginx_language_server",
         },
         opts = {
           auto_install = true,

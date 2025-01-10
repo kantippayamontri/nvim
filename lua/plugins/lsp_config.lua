@@ -25,6 +25,7 @@ return {
         -- docker
         dockerls = {},
         docker_compose_language_service = {},
+        nginx_language_server = {},
       },
     },
     config = function(_, opts)
