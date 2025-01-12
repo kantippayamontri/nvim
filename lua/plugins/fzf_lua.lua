@@ -34,9 +34,9 @@ return {
 
       local img_previewer ---@type string[]?
       for _, v in ipairs({
-        { cmd = "ueberzug", args = {} },
+        -- { cmd = "ueberzugpp", args = {} },
         { cmd = "chafa", args = { "{file}", "--format=symbols" } },
-        { cmd = "viu", args = { "-b" } },
+        -- { cmd = "viu", args = { "-b" } },
       }) do
         if vim.fn.executable(v.cmd) == 1 then
           img_previewer = vim.list_extend({ v.cmd }, v.args)
