@@ -1,4 +1,18 @@
 return {
+  -- for jinja using none-ls
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvimtools/none-ls-extras.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.djlint,
+        },
+      })
+    end,
+    vim.keymap.set("n", "<C-Q>", vim.lsp.buf.format, {}),
+  },
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -12,7 +26,7 @@ return {
           typescriptreact = { "prettier" },
           svelte = { "prettier" },
           css = { "prettier" },
-          html = { "djlint" }, --TODO: fix this for normal use
+          html = { "prettire" },
           json = { "prettier" },
           yaml = { "prettier" },
           markdown = { "prettier" },
@@ -30,10 +44,17 @@ return {
         format_on_save = {
           lsp_fallback = true,
           async = false,
-          timeout_ms = 300,
+          timeout_ms = 500,
         },
       })
 
+      -- vim.keymap.set({ "n", "v" }, "<C-Q>", function()
+      --   conform.format({
+      --     lsp_fallback = true,
+      --     async = false,
+      --     timeout_ms = 500,
+      --   })
+      -- end, { desc = "Format file or range (in visual mode)" })
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
           lsp_fallback = true,
