@@ -21,3 +21,6 @@ vim.cmd("autocmd CursorHold,CursorHoldI * checktime")
 
 -- show file name in the top
 vim.o.winbar = "%f"
+
+-- Neovim default updatetime is 4000
+vim.opt.updatetime = 200
