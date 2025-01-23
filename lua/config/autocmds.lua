@@ -23,3 +23,11 @@ vim.api.nvim_create_autocmd("TabEnter", {
     end
   end,
 })
+
+-- always write file -> autosave
+vim.api.nvim_create_autocmd({ "InsertLeavePre", "TextChanged", "TextChangedP" }, {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! write")
+  end,
+})

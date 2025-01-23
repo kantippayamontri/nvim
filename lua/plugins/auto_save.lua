@@ -2,6 +2,7 @@ return {
   -- this plugin use for auto-save file without :w
   {
     "Pocco81/auto-save.nvim",
+        enabled=false,
     config = function()
       require("auto-save").setup({
         enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)

@@ -24,3 +24,6 @@ vim.o.winbar = "%f"
 
 -- Neovim default updatetime is 4000
 vim.opt.updatetime = 200
+
+-- autosave
+vim.o.autowriteall = true
