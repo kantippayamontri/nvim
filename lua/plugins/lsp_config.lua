@@ -64,7 +64,8 @@ return {
 
       local fzf_lua = require("fzf-lua")
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", fzf_lua.lsp_definitions, {})
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "gD", fzf_lua.lsp_definitions, {})
       vim.keymap.set("n", "gr", fzf_lua.lsp_references, {})
       vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
       vim.keymap.set({ "n" }, "<leader>ca", fzf_lua.lsp_code_actions, {})

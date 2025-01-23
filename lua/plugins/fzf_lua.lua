@@ -57,6 +57,7 @@ return {
         previewers = {
           builtin = {
             extensions = {
+              ["ico"] = img_previewer,
               ["png"] = img_previewer,
               ["jpg"] = img_previewer,
               ["jpeg"] = img_previewer,
