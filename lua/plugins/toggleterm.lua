@@ -15,6 +15,14 @@ return {
         on_close = function(term)
           vim.cmd("normal! m`") -- Save cursor position before closing
         end
+        require("toggleterm").setup({
+          size = 20,
+          open_mapping = [[<C-t>]],
+          direction = "float",
+          float_opts = {
+            border = "curved",
+          },
+        })
       end,
     },
   },
