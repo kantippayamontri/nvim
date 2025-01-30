@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap("n", "<leader>tn", ":tabnew<CR>", { noremap = true, sile
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true }) -- close the tab
 
 -- for neovim restart lsp server
-vim.api.nvim_set_keymap("n", "<leader>lr", ":LspRestart<CR>", {desc = "Restart LSP sercer"})
+vim.api.nvim_set_keymap("n", "<leader>lr", ":LspRestart<CR>", {desc = "Restart LSP server"})
 
 -- for horizontal scroll
 vim.api.nvim_set_keymap('n', '<S-Right>', 'zL', { noremap = true, silent = true }) -- Scroll right
