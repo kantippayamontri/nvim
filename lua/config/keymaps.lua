@@ -19,3 +19,7 @@ vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, si
 
 -- for neovim restart lsp server
 vim.api.nvim_set_keymap("n", "<leader>lr", ":LspRestart<CR>", {desc = "Restart LSP sercer"})
+
+-- for horizontal scroll
+vim.api.nvim_set_keymap('n', '<S-Right>', 'zL', { noremap = true, silent = true }) -- Scroll right
+vim.api.nvim_set_keymap('n', '<S-Left>', 'zH', { noremap = true, silent = true })  -- Scroll left
