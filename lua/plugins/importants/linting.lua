@@ -11,7 +11,7 @@ return {
         typescriptreact = { "eslint_d" },
         svelte = { "eslint_d" },
         python = { "ruff" },
-        html = { "djlint" },
+        html = { "eslint_d" },
         dockerfile = { "hadolint" },
       }
 
@@ -23,7 +23,7 @@ return {
           lint.try_lint()
         end,
       })
-      vim.keymap.set("n", "<leader>ll", function()
+      vim.keymap.set("n", "<leader>lt", function()
         lint.try_lint()
       end, { desc = "Trigger linting for current file" })
     end,

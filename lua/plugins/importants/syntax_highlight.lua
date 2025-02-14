@@ -22,4 +22,8 @@ return {
       })
     end,
   },
+    -- for raninbow delimeter
+  {
+    "https://github.com/hiphish/rainbow-delimiters.nvim",
+  },
 }

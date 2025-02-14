@@ -8,7 +8,13 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set relativenumber")
 vim.g.mapleader = " "
-vim.g.background = "light"
+vim.g.background = "dark"
+vim.o.background = "dark"
+vim.opt.termguicolors = true
+
+vim.opt.autoread = true -- auto reload when file change from outside
+
+vim.keymap.set("n", "s", "<Nop>", { silent = true })
 
 -- for auto reload when file change form outside
 vim.cmd("set autoread")
@@ -18,6 +24,8 @@ vim.cmd(
 )
 vim.cmd("autocmd TextChanged,TextChangedI * checktime")
 vim.cmd("autocmd CursorHold,CursorHoldI * checktime")
+
+vim.g.lazyvim_mini_snippets_in_completion = true
 
 -- show file name in the top
 vim.o.winbar = "%f"

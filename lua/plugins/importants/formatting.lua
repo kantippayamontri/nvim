@@ -1,5 +1,5 @@
 return {
-  -- for jinja using none-ls
+    -- use for format djlint for jinja template
   {
     "nvimtools/none-ls.nvim",
     dependencies = { "nvimtools/none-ls-extras.nvim" },
@@ -9,7 +9,7 @@ return {
         sources = {
           null_ls.builtins.formatting.djlint.with({
             extra_args = { "--reformat", "--format-css", "--format-js" }, -- Ensures formatting is applied
-            -- filetypes = { "html", "jinja", "jinja.html", "css", "javascript" }, -- Specify file types
+            filetypes = { "html", "jinja", "jinja.html", "css", "javascript" }, -- Specify file types
           }),
         },
       })
@@ -36,6 +36,7 @@ return {
           graphql = { "prettier" },
           lua = { "stylua" },
           -- python = { "ruff" },
+          --
           python = function(bufnr)
             if require("conform").get_formatter_info("ruff_format", bufnr).available then
               return { "ruff_format" }
@@ -51,13 +52,6 @@ return {
         },
       })
 
-      -- vim.keymap.set({ "n", "v" }, "<C-Q>", function()
-      --   conform.format({
-      --     lsp_fallback = true,
-      --     async = false,
-      --     timeout_ms = 500,
-      --   })
-      -- end, { desc = "Format file or range (in visual mode)" })
       vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         conform.format({
           lsp_fallback = true,
