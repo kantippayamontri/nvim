@@ -13,4 +13,3 @@ require("config.lazy")
 -- vim.cmd.colorscheme("onedark_dark") -- for onedark theme
 -- vim.cmd.colorscheme("gruvbox") -- for gruvbox theme
 vim.cmd.colorscheme("everforest") -- for everforest theme
-

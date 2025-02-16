@@ -2,7 +2,7 @@ return {
   { "github/copilot.vim", enabled = false },
   {
     "luozhiya/fittencode.nvim",
-    enabled = true,
+    enabled = false,
     opts = {},
     config = function()
       require("fittencode").setup({
