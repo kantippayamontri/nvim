@@ -45,8 +45,8 @@ return {
         default = { "lsp", "path", "snippets", "buffer" },
         -- default = { default = { "luasnip" } },
         -- optionally disable cmdline completions
-        -- cmdline = {},
       },
+      -- cmdline = { enabled = true },
       completion = {
         accept = {
           -- experimental auto-brackets support

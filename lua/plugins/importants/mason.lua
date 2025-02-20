@@ -39,7 +39,8 @@ return {
           "docker_compose_language_service",
           "dockerls",
           "nginx_language_server",
-        },
+          "yamlls", -- yaml language server
+        }, 
         opts = {
           auto_install = true,
         },
@@ -50,12 +51,13 @@ return {
         ensure_installed = {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
-          "ruff",
+          "ruff", --python formatter and linter
           -- "isort", -- python formatter
           -- "black", -- python formatter
           -- "pylint", -- python linter
           "eslint_d", -- js linter
           "djlint", -- for flask and django template linting
+          "yamllint", -- for yaml linting
         },
       })
     end,

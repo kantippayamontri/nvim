@@ -1,5 +1,5 @@
 return {
-  { "github/copilot.vim", enabled = false },
+  { "github/copilot.vim", enabled = true },
   {
     "luozhiya/fittencode.nvim",
     enabled = false,
