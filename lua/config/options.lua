@@ -35,3 +35,5 @@ vim.opt.updatetime = 200
 
 -- autosave
 vim.o.autowriteall = true
+
+vim.opt.clipboard = "unnamedplus"
