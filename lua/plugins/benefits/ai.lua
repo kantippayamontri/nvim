@@ -1,4 +1,12 @@
 return {
+  -- ai list
+  -- 1. copilot.nvim
+  -- 2. fittencode.nvim
+  -- 3. augment.vim
+  -- 4. ChatGPT.nvim [comming]
+  -- 5. codeium.vim [comming]
+  -- 6. gen.nvim [comming]
+  -- 7. nvim-llama [comming]
   { "github/copilot.vim", enabled = true },
   {
     "luozhiya/fittencode.nvim",
@@ -164,7 +172,7 @@ return {
   },
   {
     "https://github.com/augmentcode/augment.vim",
-    enabled = true,
+    enabled = false,
     config = function()
       -- start chat in normal and visual mode
       vim.api.nvim_set_keymap("n", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })

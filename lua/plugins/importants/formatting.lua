@@ -1,7 +1,8 @@
 return {
-    -- use for format djlint for jinja template
+  -- use for format djlint for jinja template
   {
     "nvimtools/none-ls.nvim",
+    enabled = false,
     dependencies = { "nvimtools/none-ls-extras.nvim" },
     config = function()
       local null_ls = require("null-ls")
@@ -35,7 +36,7 @@ return {
           markdown = { "prettier" },
           graphql = { "prettier" },
           lua = { "stylua" },
-            sh = { "shfmt" },
+          sh = { "shfmt" },
           -- python = { "ruff" },
           --
           python = function(bufnr)
