@@ -7,6 +7,7 @@ return {
   -- 5. codeium.vim [comming]
   -- 6. gen.nvim [comming]
   -- 7. nvim-llama [comming]
+  -- 8. minuet-ai.nvim [comming]
   { "github/copilot.vim", enabled = true },
   {
     "luozhiya/fittencode.nvim",
