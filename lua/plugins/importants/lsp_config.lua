@@ -20,6 +20,10 @@ return {
               },
             },
           },
+          on_init = function(client)
+            -- Explicitly set positionEncoding to UTF-8
+            client.server_capabilities.positionEncoding = "utf-16"
+          end,
         }, -- lua lsp servers
         ruff = {},
         -- docker

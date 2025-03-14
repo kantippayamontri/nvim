@@ -12,8 +12,8 @@ vim.keymap.set("n", "<leader>'", function()
 end)
 
 -- for neovim tab
-vim.api.nvim_set_keymap("n", "<Tab>", ":tabn<CR>", { noremap = true, silent = true }) -- go to next tab
-vim.api.nvim_set_keymap("n", "<S-Tab>", ":tabp<CR>", { noremap = true, silent = true }) -- go to previous tab
+vim.api.nvim_set_keymap("n", "<leader>tN", ":tabn<CR>", { noremap = true, silent = true }) -- go to next tab
+vim.api.nvim_set_keymap("n", "<leader>tP", ":tabp<CR>", { noremap = true, silent = true }) -- go to previous tab
 vim.api.nvim_set_keymap("n", "<leader>tn", ":tabnew<CR>", { noremap = true, silent = true }) -- create new tab
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true }) -- close the tab
 
@@ -27,3 +27,14 @@ vim.api.nvim_set_keymap("n", "<S-Left>", "zH", { noremap = true, silent = true }
 -- move line in visual mode
 vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<leader>k", ":m '<-2<CR>gv=gv")
+
+-- for move forward with ctrl + i
+vim.keymap.set("n", "<C-l>", "<C-i>", { desc = "Jump forward in the jump list" })
+
+-- Swap the functionality of { and }
+vim.keymap.set('n', '{', '}', { noremap = true, silent = true, desc = 'Swapped: Move to next paragraph' })
+vim.keymap.set('n', '}', '{', { noremap = true, silent = true, desc = 'Swapped: Move to previous paragraph' })
+
+-- Optional: Also swap in visual mode if needed
+vim.keymap.set('v', '{', '}', { noremap = true, silent = true, desc = 'Swapped: Move to next paragraph (visual)' })
+vim.keymap.set('v', '}', '{', { noremap = true, silent = true, desc = 'Swapped: Move to previous paragraph (visual)' })

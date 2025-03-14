@@ -8,7 +8,7 @@ return {
   -- 6. gen.nvim [comming]
   -- 7. nvim-llama [comming]
   -- 8. minuet-ai.nvim [comming]
-  { "github/copilot.vim", enabled = true },
+  { "github/copilot.vim", enabled = false },
   {
     "luozhiya/fittencode.nvim",
     enabled = false,
@@ -173,7 +173,7 @@ return {
   },
   {
     "https://github.com/augmentcode/augment.vim",
-    enabled = false,
+    enabled = true,
     config = function()
       -- start chat in normal and visual mode
       vim.api.nvim_set_keymap("n", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })

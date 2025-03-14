@@ -36,11 +36,12 @@ return {
           "ts_ls",
           "lua_ls",
           "ruff",
+          "pyright",
           "docker_compose_language_service",
           "dockerls",
           "nginx_language_server",
           "yamlls", -- yaml language server
-        }, 
+        },
         opts = {
           auto_install = true,
         },
