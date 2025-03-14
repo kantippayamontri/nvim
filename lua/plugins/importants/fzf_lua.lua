@@ -34,8 +34,8 @@ return {
 
       local img_previewer ---@type string[]?
       for _, v in ipairs({
-        -- { cmd = "ueberzugpp", args = {} },
-        { cmd = "chafa", args = { "{file}", "--format=symbols" } },
+        { cmd = "ueberzugpp", args = {} },
+        -- { cmd = "chafa", args = { "{file}", "--format=symbols" } },
         -- { cmd = "viu", args = { "-b" } },
       }) do
         if vim.fn.executable(v.cmd) == 1 then
@@ -178,9 +178,13 @@ return {
       -- find
       { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fc", LazyVim.pick.config_files(), desc = "Find Config File" },
-      { "<leader>ff", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-      { "<leader>fF", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
-      { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git-files)" },
+      { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+      { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      {
+        "<leader>fg",
+        "<cmd>FzfLua git_files<cr>",
+        desc = "Find Files (git-files)",
+      },
       { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Recent" },
       { "<leader>fR", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
       -- git
@@ -197,7 +201,11 @@ return {
       { "<leader>fj", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
       { "<leader>fJ", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
       { "<leader>sh", "<cmd>FzfLua help_tags<cr>", desc = "Help Pages" },
-      { "<leader>sH", "<cmd>FzfLua highlights<cr>", desc = "Search Highlight Groups" },
+      {
+        "<leader>sH",
+        "<cmd>FzfLua highlights<cr>",
+        desc = "Search Highlight Groups",
+      },
       { "<leader>sj", "<cmd>FzfLua jumps<cr>", desc = "Jumplist" },
       { "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "Key Maps" },
       { "<leader>sl", "<cmd>FzfLua loclist<cr>", desc = "Location List" },
@@ -207,17 +215,31 @@ return {
       { "<leader>sq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix List" },
       { "<leader>sw", LazyVim.pick("grep_cword"), desc = "Word (Root Dir)" },
       { "<leader>sW", LazyVim.pick("grep_cword", { root = false }), desc = "Word (cwd)" },
-      { "<leader>sw", LazyVim.pick("grep_visual"), mode = "v", desc = "Selection (Root Dir)" },
-      { "<leader>sW", LazyVim.pick("grep_visual", { root = false }), mode = "v", desc = "Selection (cwd)" },
-      { "<leader>uC", LazyVim.pick("colorschemes"), desc = "Colorscheme with Preview" },
       {
-        "<leader>ss",
-        function()
-          require("fzf-lua").lsp_document_symbols({
-            regex_filter = symbols_filter,
-          })
-        end,
-        desc = "Goto Symbol",
+        "<leader>sw",
+        LazyVim.pick("grep_visual"),
+        mode = "v",
+        desc = "Selection (Root Dir)",
+      },
+      {
+        "<leader>sW",
+        LazyVim.pick("grep_visual", { root = false }),
+        mode = "v",
+        desc = "Selection (cwd)",
+      },
+      {
+        "<leader>uC",
+        LazyVim.pick("colorschemes"),
+        desc = "Colorscheme with Preview",
+      },
+      {
+          "<leader>ss",
+          function()
+              require("fzf-lua").lsp_document_symbols({
+                  regex_filter = symbols_filter,
+              })
+          end,
+          desc = "Goto Symbol",
       },
       {
         "<leader>sS",

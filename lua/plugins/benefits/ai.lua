@@ -1,8 +1,17 @@
 return {
+  -- ai list
+  -- 1. copilot.nvim
+  -- 2. fittencode.nvim
+  -- 3. augment.vim
+  -- 4. ChatGPT.nvim [comming]
+  -- 5. codeium.vim [comming]
+  -- 6. gen.nvim [comming]
+  -- 7. nvim-llama [comming]
+  -- 8. minuet-ai.nvim [comming]
   { "github/copilot.vim", enabled = false },
   {
     "luozhiya/fittencode.nvim",
-    enabled = true,
+    enabled = false,
     opts = {},
     config = function()
       require("fittencode").setup({
@@ -163,94 +172,18 @@ return {
     end,
   },
   {
-    "saghen/blink.cmp",
-    lazy = false, -- lazy loading handled internally
-    -- optional: provides snippets for the snippet source
-    dependencies = "rafamadriz/friendly-snippets",
-
-    -- use a release tag to download pre-built binaries
-    version = "v0.*",
-    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- see the "default configuration" section below for full documentation on how to define
-      -- your own keymap.
-      keymap = {
-        preset = "enter",
-        ["<C-n>"] = { "select_next", "fallback" },
-        ["<C-p"] = { "select_prev", "fallback" },
-
-        ["<C-a"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e"] = { "hide", "fallback" },
-      },
-
-      appearance = {
-        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- Useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release
-        use_nvim_cmp_as_default = false,
-        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = "mono",
-      },
-
-      -- default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, via `opts_extend`
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-        -- default = { default = { "luasnip" } },
-        -- optionally disable cmdline completions
-        -- cmdline = {},
-      },
-      completion = {
-        accept = {
-          -- experimental auto-brackets support
-          auto_brackets = {
-            enabled = true,
-          },
-        },
-        menu = {
-          draw = {
-            treesitter = { "lsp" },
-          },
-        },
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 200,
-        },
-        ghost_text = {
-          -- enabled = vim.g.ai_cmp,
-          enabled = false,
-        },
-      },
-
-      -- experimental signature help support
-      -- signature = { enabled = true }
-    },
-    -- allows extending the providers array elsewhere in your config
-    -- without having to redefine it
-    opts_extend = { "sources.default" },
-    snippets = {
-      expand = function(snippet)
-        require("luasnip").lsp_expand(snippet)
-      end,
-      active = function(filter)
-        if filter and filter.direction then
-          return require("luasnip").jumpable(filter.direction)
-        end
-        return require("luasnip").in_snippet()
-      end,
-      jump = function(direction)
-        require("luasnip").jump(direction)
-      end,
-    },
+    "https://github.com/augmentcode/augment.vim",
+    enabled = true,
+    config = function()
+      -- start chat in normal and visual mode
+      vim.api.nvim_set_keymap("n", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
+      -- start chat with new conversation
+      vim.api.nvim_set_keymap("n", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
+      -- toggle chat window
+      vim.api.nvim_set_keymap("n", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
+    end,
   },
 }

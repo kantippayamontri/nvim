@@ -20,12 +20,17 @@ return {
               },
             },
           },
+          on_init = function(client)
+            -- Explicitly set positionEncoding to UTF-8
+            client.server_capabilities.positionEncoding = "utf-16"
+          end,
         }, -- lua lsp servers
         ruff = {},
         -- docker
         dockerls = {},
         docker_compose_language_service = {},
         nginx_language_server = {},
+        bashls = {},
       },
     },
     config = function(_, opts)
@@ -67,7 +72,7 @@ return {
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "gD", fzf_lua.lsp_definitions, {})
       vim.keymap.set("n", "gr", fzf_lua.lsp_references, {})
-      vim.keymap.set("n", "rn", vim.lsp.buf.rename, {})
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       vim.keymap.set({ "n" }, "<leader>ca", fzf_lua.lsp_code_actions, {})
     end,
   },
