@@ -26,6 +26,7 @@ return {
     config = function()
       require("neo-tree").setup({
         filesystem = {
+          watch_for_changes = true,
           follow_current_file = { enabled = true },
           filtered_items = {
             visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
@@ -48,6 +49,8 @@ return {
           },
         },
         window = {
+          width = 40,
+          position = "right",
           mappings = {
             ["l"] = "open",
             ["h"] = "close_node",
