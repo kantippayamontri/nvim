@@ -31,6 +31,7 @@ return {
         docker_compose_language_service = {},
         nginx_language_server = {},
         bashls = {},
+        ts_ls = {},
       },
     },
     config = function(_, opts)

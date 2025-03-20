@@ -2,7 +2,7 @@ return {
   -- use for format djlint for jinja template
   {
     "nvimtools/none-ls.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = { "nvimtools/none-ls-extras.nvim" },
     config = function()
       local null_ls = require("null-ls")
