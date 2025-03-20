@@ -12,8 +12,8 @@ vim.keymap.set("n", "<leader>'", function()
 end)
 
 -- for neovim tab
-vim.api.nvim_set_keymap("n", "<leader>tN", ":tabn<CR>", { noremap = true, silent = true }) -- go to next tab
-vim.api.nvim_set_keymap("n", "<leader>tP", ":tabp<CR>", { noremap = true, silent = true }) -- go to previous tab
+vim.api.nvim_set_keymap("n", "<leader>th", ":tabn<CR>", { noremap = true, silent = true }) -- go to next tab
+vim.api.nvim_set_keymap("n", "<leader>t;", ":tabp<CR>", { noremap = true, silent = true }) -- go to previous tab
 vim.api.nvim_set_keymap("n", "<leader>tn", ":tabnew<CR>", { noremap = true, silent = true }) -- create new tab
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true }) -- close the tab
 
