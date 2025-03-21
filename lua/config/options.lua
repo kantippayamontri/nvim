@@ -56,10 +56,11 @@ vim.diagnostic.config({
   -- virtual_text = true, -- Show diagnostics inline
   virtual_text = {
     prefix = "", -- Customize the marker
-    spacing = 4, -- 4 spaces between code and virtual text
-    suffix = " ⛺", -- Symbol after the message
+    spacing = 2, -- 4 spaces between code and virtual text
+    -- suffix = " ⛺", -- Symbol after the message
     format = function(diagnostic)
       local show_text = "🔵"
+        local end_text = "⛺"
       if diagnostic.severity == vim.diagnostic.severity.ERROR then
         show_text = "⛔"
       elseif diagnostic.severity == vim.diagnostic.severity.WARN then
@@ -69,7 +70,7 @@ vim.diagnostic.config({
       if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
         return ""
       end
-      return string.format("%s  %s", show_text, diagnostic.message)
+      return string.format("%s  %s %s", show_text, diagnostic.message,end_text)
     end,
   },
   -- signs = true, -- Show signs in the gutter
