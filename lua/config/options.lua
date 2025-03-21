@@ -48,3 +48,34 @@ vim.g.lazyvim_python_ruff = "ruff"
 _G.augment_workspace_folders =
   { "/home/kan/Work/Project/ABC_API/project/web", "/home/kan/Work/Project/serpapi_tutorial" }
 -- vim.cmd("let g:augment_workspace_folders = ['/home/kan/Work/Project/ABC_API/project/web', '/home/kan/Work/Project/serpapi_tutorial']")
+
+-- for vim diagnostic
+vim.diagnostic.config({
+  -- virtual_text = true, -- Show diagnostics inline
+  virtual_text = {
+    -- prefix = "●", -- Customize the marker
+    -- source = "if_many", -- Show source (e.g., "ruff") only if multiple sources exist
+    prefix = "", -- Customize the marker
+    format = function(diagnostic)
+      if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
+        return ""
+      end
+      return string.format("%s %s","●",diagnostic.message)
+    end,
+  },
+  -- signs = true, -- Show signs in the gutter
+  signs = {
+    active = true,
+    values = {
+      { name = "DiagnosticSignError", text = "✘" },
+      { name = "DiagnosticSignWarn", text = "▲" },
+      { name = "DiagnosticSignInfo", text = "ℹ" },
+      { name = "DiagnosticSignHint", text = "➤" },
+    },
+  },
+  update_in_insert = false, -- Don’t update diagnostics while typing
+  severity_sort = true, -- Sort by severity
+  float = {
+    border = "single", -- Optional: rounded borders for floating diagnostics
+  },
+})
