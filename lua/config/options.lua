@@ -2,6 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+vim.o.encoding = "utf-8" -- for showing nice unicode -> emoji
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
@@ -53,14 +55,21 @@ _G.augment_workspace_folders =
 vim.diagnostic.config({
   -- virtual_text = true, -- Show diagnostics inline
   virtual_text = {
-    -- prefix = "●", -- Customize the marker
-    -- source = "if_many", -- Show source (e.g., "ruff") only if multiple sources exist
     prefix = "", -- Customize the marker
+    spacing = 4, -- 4 spaces between code and virtual text
+    suffix = " ⛺", -- Symbol after the message
     format = function(diagnostic)
+      local show_text = "🔵"
+      if diagnostic.severity == vim.diagnostic.severity.ERROR then
+        show_text = "⛔"
+      elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+        show_text = "😭"
+      end
+
       if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
         return ""
       end
-      return string.format("%s %s","●",diagnostic.message)
+      return string.format("%s  %s", show_text, diagnostic.message)
     end,
   },
   -- signs = true, -- Show signs in the gutter
