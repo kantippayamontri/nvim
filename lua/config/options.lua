@@ -60,8 +60,8 @@ vim.diagnostic.config({
     -- suffix = " ⛺", -- Symbol after the message
     format = function(diagnostic)
       local show_text = "🔵"
-        local end_text = "⛺"
-      if diagnostic.severity == vim.diagnostic.severity.ERROR then
+      local end_text = "⛺"
+      if diagnostic.severity == vim.diagnostic.severity.ERROR or string.find(diagnostic.message:lower(),"error",1,true) then
         show_text = "⛔"
       elseif diagnostic.severity == vim.diagnostic.severity.WARN then
         show_text = "😭"
@@ -70,7 +70,7 @@ vim.diagnostic.config({
       if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
         return ""
       end
-      return string.format("%s  %s %s", show_text, diagnostic.message,end_text)
+      return string.format("%s  %s %s", show_text, diagnostic.message, end_text)
     end,
   },
   -- signs = true, -- Show signs in the gutter
