@@ -13,6 +13,7 @@ return {
           "dockerfile",
           "ninja",
           "rst",
+          "jinja",
         },
         ignore_install = {},
         auto_install = true,
@@ -27,6 +28,6 @@ return {
   -- for raninbow delimeter
   {
     "https://github.com/hiphish/rainbow-delimiters.nvim",
-        enabled=true,
+    enabled = true,
   },
 }

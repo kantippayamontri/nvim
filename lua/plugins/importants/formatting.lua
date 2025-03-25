@@ -8,10 +8,10 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          -- null_ls.builtins.formatting.djlint.with({
-          --   extra_args = { "--reformat", "--format-css", "--format-js" }, -- Ensures formatting is applied
-          --   filetypes = { "html", "jinja", "jinja.html", "css", "javascript" }, -- Specify file types
-          -- }),
+          null_ls.builtins.formatting.djlint.with({
+            extra_args = { "--reformat", "--format-css", "--format-js" }, -- Ensures formatting is applied
+            -- filetypes = { "html", "jinja", "jinja.html", "css", "javascript" }, -- Specify file types
+          }),
         },
       })
     end,

@@ -8,7 +8,9 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
-vim.cmd("set relativenumber")
+vim.opt.relativenumber = false -- disable relative number
+vim.opt.updatetime = 100 -- reduce the delay before neovim update the screen
+vim.opt.swapfile = false -- Swap files can slow down file operations
 vim.g.mapleader = " "
 vim.g.background = "dark"
 vim.o.background = "dark"
@@ -19,13 +21,13 @@ vim.opt.autoread = true -- auto reload when file change from outside
 vim.keymap.set("n", "s", "<Nop>", { silent = true })
 
 -- for auto reload when file change form outside
-vim.cmd("set autoread")
-vim.cmd("autocmd FocusGained,BufEnter * checktime")
-vim.cmd(
-  "autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None"
-)
-vim.cmd("autocmd TextChanged,TextChangedI * checktime")
-vim.cmd("autocmd CursorHold,CursorHoldI * checktime")
+-- vim.cmd("set autoread")
+-- vim.cmd("autocmd FocusGained,BufEnter * checktime")
+-- vim.cmd(
+--   "autocmd FileChangedShellPost * echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None"
+-- )
+-- vim.cmd("autocmd TextChanged,TextChangedI * checktime")
+-- vim.cmd("autocmd CursorHold,CursorHoldI * checktime")
 
 vim.g.lazyvim_mini_snippets_in_completion = true
 
