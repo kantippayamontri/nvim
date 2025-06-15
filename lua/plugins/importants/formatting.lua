@@ -68,7 +68,7 @@ return {
                 --   async = false,
                 --   timeout_ms = 500,
                 -- },
-                format_on_save = false,
+                format_on_save = nil,
             })
 
             vim.keymap.set({ "n", "v" }, "<leader>cf", function()

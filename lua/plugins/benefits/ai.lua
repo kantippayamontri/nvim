@@ -1,189 +1,244 @@
 return {
-  -- ai list
-  -- 1. copilot.nvim
-  -- 2. fittencode.nvim
-  -- 3. augment.vim
-  -- 4. ChatGPT.nvim [comming]
-  -- 5. codeium.vim [comming]
-  -- 6. gen.nvim [comming]
-  -- 7. nvim-llama [comming]
-  -- 8. minuet-ai.nvim [comming]
-  { "github/copilot.vim", enabled = false },
-  {
-    "luozhiya/fittencode.nvim",
-    enabled = false,
-    opts = {},
-    config = function()
-      require("fittencode").setup({
-        action = {
-          document_code = {
-            -- Show "Fitten Code - Document Code" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          edit_code = {
-            -- Show "Fitten Code - Edit Code" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          explain_code = {
-            -- Show "Fitten Code - Explain Code" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          find_bugs = {
-            -- Show "Fitten Code - Find Bugs" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          generate_unit_test = {
-            -- Show "Fitten Code - Generate UnitTest" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          start_chat = {
-            -- Show "Fitten Code - Start Chat" in the editor context menu, when you right-click on the code.
-            show_in_editor_context_menu = true,
-          },
-          identify_programming_language = {
-            -- Identify programming language of the current buffer
-            -- * Unnamed buffer
-            -- * Buffer without file extension
-            -- * Buffer no filetype detected
-            identify_buffer = true,
-          },
+    -- ai list
+    -- 1. copilot.nvim
+    -- 2. fittencode.nvim
+    -- 3. augment.vim
+    -- 4. ChatGPT.nvim [comming]
+    -- 5. codeium.vim [comming]
+    -- 6. gen.nvim [comming]
+    -- 7. nvim-llama [comming]
+    -- 8. minuet-ai.nvim [comming]
+    { "github/copilot.vim", enabled = true },
+    {
+        "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
+        dependencies = {
+            { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        disable_specific_inline_completion = {
-          -- Disable auto-completion for some specific file suffixes by entering them below
-          -- For example, `suffixes = {'lua', 'cpp'}`
-          suffixes = {},
+        build = "make tiktoken",                            -- Only on MacOS or Linux
+        opts = {
+            -- See Configuration section for options
         },
-        inline_completion = {
-          -- Enable inline code completion.
-          ---@type boolean
-          enable = true,
-          -- Disable auto completion when the cursor is within the line.
-          ---@type boolean
-          disable_completion_within_the_line = false,
-          -- Disable auto completion when pressing Backspace or Delete.
-          ---@type boolean
-          disable_completion_when_delete = false,
-          -- Auto triggering completion
-          ---@type boolean
-          auto_triggering_completion = true,
-          -- Accept Mode
-          -- Available options:
-          -- * `commit` (VSCode style accept, also default)
-          --   - `Tab` to Accept all suggestions
-          --   - `Ctrl+Right` to Accept word
-          --   - `Ctrl+Down` to Accept line
-          --   - Interrupt
-          --      - Enter a different character than suggested
-          --      - Exit insert mode
-          --      - Move the cursor
-          -- * `stage` (Stage style accept)
-          --   - `Tab` to Accept all staged characters
-          --   - `Ctrl+Right` to Stage word
-          --   - `Ctrl+Left` to Revoke word
-          --   - `Ctrl+Down` to Stage line
-          --   - `Ctrl+Up` to Revoke line
-          --   - Interrupt(Same as `commit`, but with the following changes:)
-          --      - Characters that have already been staged will be lost.
-          accept_mode = "commit",
-        },
-        delay_completion = {
-          -- Delay time for inline completion (in milliseconds).
-          ---@type integer
-          delaytime = 0,
-        },
-        prompt = {
-          -- Maximum number of characters to prompt for completion/chat.
-          max_characters = 1000000,
-        },
-        chat = {
-          -- Highlight the conversation in the chat window at the current cursor position.
-          highlight_conversation_at_cursor = false,
-          -- Style
-          -- Available options:
-          -- * `sidebar` (Siderbar style, also default)
-          -- * `floating` (Floating style)
-          style = "sidebar",
-          sidebar = {
-            -- Width of the sidebar in characters.
-            width = 42,
-            -- Position of the sidebar.
-            -- Available options:
-            -- * `left`
-            -- * `right`
-            position = "left",
-          },
-          floating = {
-            -- Border style of the floating window.
-            -- Same border values as `nvim_open_win`.
-            border = "rounded",
-            -- Size of the floating window.
-            -- <= 1: percentage of the screen size
-            -- >  1: number of lines/columns
-            size = { width = 0.8, height = 0.8 },
-          },
-        },
-        -- Enable/Disable the default keymaps in inline completion.
-        use_default_keymaps = true,
-        -- Default keymaps
-        keymaps = {
-          inline = {
-            ["<TAB>"] = "accept_all_suggestions",
-            ["<C-Down>"] = "accept_line",
-            ["<C-Right>"] = "accept_word",
-            ["<C-Up>"] = "revoke_line",
-            ["<C-Left>"] = "revoke_word",
-            ["<A-\\>"] = "triggering_completion",
-          },
-          chat = {
-            ["q"] = "close",
-            ["[c"] = "goto_previous_conversation",
-            ["]c"] = "goto_next_conversation",
-            ["c"] = "copy_conversation",
-            ["C"] = "copy_all_conversations",
-            ["d"] = "delete_conversation",
-            ["D"] = "delete_all_conversations",
-          },
-        },
-        -- Setting for source completion.
-        source_completion = {
-          -- Enable source completion.
-          enable = true,
-          -- engine support nvim-cmp and blink.cmp
-          engine = "blink", -- "cmp" | "blink"
-          -- trigger characters for source completion.
-          -- Available options:
-          -- * A  list of characters like {'a', 'b', 'c', ...}
-          -- * A function that returns a list of characters like `function() return {'a', 'b', 'c', ...}`
-          trigger_chars = {},
-        },
-        -- Set the mode of the completion.
-        -- Available options:
-        -- * 'inline' (VSCode style inline completion)
-        -- * 'source' (integrates into other completion plugins)
-        completion_mode = "inline",
-        ---@class LogOptions
-        log = {
-          -- Log level.
-          level = vim.log.levels.WARN,
-          -- Max log file size in MB, default is 10MB
-          max_size = 10,
-        },
-      })
-    end,
-  },
-  {
-    "https://github.com/augmentcode/augment.vim",
-    enabled = true,
-    config = function()
-      -- start chat in normal and visual mode
-      vim.api.nvim_set_keymap("n", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
-      -- start chat with new conversation
-      vim.api.nvim_set_keymap("n", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
-      -- toggle chat window
-      vim.api.nvim_set_keymap("n", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("v", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
-    end,
-  },
+        -- See Commands section for default commands if you want to lazy load on them
+        config = function()
+            require("CopilotChat").setup({
+
+                debug = false, --Enable debugging
+
+                -- Chat window configuration
+                window = {
+                    layout = "float",       -- 'vertical', 'horizontal', 'float', 'replace'
+                    width = 0.8,            -- fractional width of parent, or absolute width in columns when > 1
+                    height = 0.6,           -- fractional height of parent, or absolute height in rows when > 1
+                    -- Options below only apply to floating windows
+                    relative = "editor",    -- 'editor', 'win', 'cursor', 'mouse'
+                    border = "single",      -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+                    row = nil,              -- row position of the window, default is centered
+                    col = nil,              -- column position of the window, default is centered
+                    title = "Copilot Chat", -- title of chat window
+                    footer = nil,           -- footer of chat window
+                    zindex = 1,             -- determines if window is on top or below other floating windows
+                },
+
+                -- Chat settings
+                question_header = "## User ", -- Header to use for user questions
+                answer_header = "## Copilot ", -- Header to use for AI answers
+                error_header = "## Error ", -- Header to use for errors
+                separator = "───", -- Separator to use in chat
+
+                -- Key mappings for quick access
+                vim.keymap.set("n", "<leader>at", ":CopilotChatToggle<CR>", { desc = "Open Copilot Chat" }),
+                vim.keymap.set("n", "<leader>ac", ":CopilotChat ", { desc = "Copilot Chat" }),
+                vim.keymap.set("v", "<leader>ac", ":CopilotChat ", { desc = "Copilot Chat" }),
+                vim.keymap.set("v", "<leader>ax", ":CopilotChatExplain<CR>", { desc = "Explain code" }),
+                vim.keymap.set("v", "<leader>ar", ":CopilotChatReview<CR>", { desc = "Review code" }),
+                vim.keymap.set("v", "<leader>af", ":CopilotChatFix<CR>", { desc = "Fix code" }),
+                vim.keymap.set("v", "<leader>ao", ":CopilotChatOptimize<CR>", { desc = "Optimize code" }),
+                vim.keymap.set("v", "<leader>ad", ":CopilotChatDocs<CR>", { desc = "Generate docs" }),
+                vim.keymap.set("n", "<leader>aR", ":CopilotChatReset<CR>", { desc = "Reset Chat" }),
+                vim.keymap.set("n", "<leader>aM", ":CopilotChatModels<CR>", { desc = "Select Models" }),
+                vim.keymap.set("n", "<leader>aA", ":CopilotChatAgents<CR>", { desc = "Select Agents" }),
+
+                -- vim.keymap.set('n', '<leader>at', ':CopilotChatTests<CR>', { desc = 'Generate tests' });
+                -- vim.keymap.set('n', '<leader>am', ':CopilotChatCommit<CR>', { desc = 'Generate commit message' });
+            })
+        end,
+    },
+    {
+        "luozhiya/fittencode.nvim",
+        enabled = false,
+        opts = {},
+        config = function()
+            require("fittencode").setup({
+                action = {
+                    document_code = {
+                        -- Show "Fitten Code - Document Code" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    edit_code = {
+                        -- Show "Fitten Code - Edit Code" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    explain_code = {
+                        -- Show "Fitten Code - Explain Code" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    find_bugs = {
+                        -- Show "Fitten Code - Find Bugs" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    generate_unit_test = {
+                        -- Show "Fitten Code - Generate UnitTest" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    start_chat = {
+                        -- Show "Fitten Code - Start Chat" in the editor context menu, when you right-click on the code.
+                        show_in_editor_context_menu = true,
+                    },
+                    identify_programming_language = {
+                        -- Identify programming language of the current buffer
+                        -- * Unnamed buffer
+                        -- * Buffer without file extension
+                        -- * Buffer no filetype detected
+                        identify_buffer = true,
+                    },
+                },
+                disable_specific_inline_completion = {
+                    -- Disable auto-completion for some specific file suffixes by entering them below
+                    -- For example, `suffixes = {'lua', 'cpp'}`
+                    suffixes = {},
+                },
+                inline_completion = {
+                    -- Enable inline code completion.
+                    ---@type boolean
+                    enable = true,
+                    -- Disable auto completion when the cursor is within the line.
+                    ---@type boolean
+                    disable_completion_within_the_line = false,
+                    -- Disable auto completion when pressing Backspace or Delete.
+                    ---@type boolean
+                    disable_completion_when_delete = false,
+                    -- Auto triggering completion
+                    ---@type boolean
+                    auto_triggering_completion = true,
+                    -- Accept Mode
+                    -- Available options:
+                    -- * `commit` (VSCode style accept, also default)
+                    --   - `Tab` to Accept all suggestions
+                    --   - `Ctrl+Right` to Accept word
+                    --   - `Ctrl+Down` to Accept line
+                    --   - Interrupt
+                    --      - Enter a different character than suggested
+                    --      - Exit insert mode
+                    --      - Move the cursor
+                    -- * `stage` (Stage style accept)
+                    --   - `Tab` to Accept all staged characters
+                    --   - `Ctrl+Right` to Stage word
+                    --   - `Ctrl+Left` to Revoke word
+                    --   - `Ctrl+Down` to Stage line
+                    --   - `Ctrl+Up` to Revoke line
+                    --   - Interrupt(Same as `commit`, but with the following changes:)
+                    --      - Characters that have already been staged will be lost.
+                    accept_mode = "commit",
+                },
+                delay_completion = {
+                    -- Delay time for inline completion (in milliseconds).
+                    ---@type integer
+                    delaytime = 0,
+                },
+                prompt = {
+                    -- Maximum number of characters to prompt for completion/chat.
+                    max_characters = 1000000,
+                },
+                chat = {
+                    -- Highlight the conversation in the chat window at the current cursor position.
+                    highlight_conversation_at_cursor = false,
+                    -- Style
+                    -- Available options:
+                    -- * `sidebar` (Siderbar style, also default)
+                    -- * `floating` (Floating style)
+                    style = "sidebar",
+                    sidebar = {
+                        -- Width of the sidebar in characters.
+                        width = 42,
+                        -- Position of the sidebar.
+                        -- Available options:
+                        -- * `left`
+                        -- * `right`
+                        position = "left",
+                    },
+                    floating = {
+                        -- Border style of the floating window.
+                        -- Same border values as `nvim_open_win`.
+                        border = "rounded",
+                        -- Size of the floating window.
+                        -- <= 1: percentage of the screen size
+                        -- >  1: number of lines/columns
+                        size = { width = 0.8, height = 0.8 },
+                    },
+                },
+                -- Enable/Disable the default keymaps in inline completion.
+                use_default_keymaps = true,
+                -- Default keymaps
+                keymaps = {
+                    inline = {
+                        ["<TAB>"] = "accept_all_suggestions",
+                        ["<C-Down>"] = "accept_line",
+                        ["<C-Right>"] = "accept_word",
+                        ["<C-Up>"] = "revoke_line",
+                        ["<C-Left>"] = "revoke_word",
+                        ["<A-\\>"] = "triggering_completion",
+                    },
+                    chat = {
+                        ["q"] = "close",
+                        ["[c"] = "goto_previous_conversation",
+                        ["]c"] = "goto_next_conversation",
+                        ["c"] = "copy_conversation",
+                        ["C"] = "copy_all_conversations",
+                        ["d"] = "delete_conversation",
+                        ["D"] = "delete_all_conversations",
+                    },
+                },
+                -- Setting for source completion.
+                source_completion = {
+                    -- Enable source completion.
+                    enable = true,
+                    -- engine support nvim-cmp and blink.cmp
+                    engine = "blink", -- "cmp" | "blink"
+                    -- trigger characters for source completion.
+                    -- Available options:
+                    -- * A  list of characters like {'a', 'b', 'c', ...}
+                    -- * A function that returns a list of characters like `function() return {'a', 'b', 'c', ...}`
+                    trigger_chars = {},
+                },
+                -- Set the mode of the completion.
+                -- Available options:
+                -- * 'inline' (VSCode style inline completion)
+                -- * 'source' (integrates into other completion plugins)
+                completion_mode = "inline",
+                ---@class LogOptions
+                log = {
+                    -- Log level.
+                    level = vim.log.levels.WARN,
+                    -- Max log file size in MB, default is 10MB
+                    max_size = 10,
+                },
+            })
+        end,
+    },
+    {
+        "https://github.com/augmentcode/augment.vim",
+        enabled = false,
+        config = function()
+            -- start chat in normal and visual mode
+            vim.api.nvim_set_keymap("n", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("v", "<leader>ac", ":Augment chat<CR>", { noremap = true, silent = true })
+            -- start chat with new conversation
+            vim.api.nvim_set_keymap("n", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("v", "<leader>an", ":Augment chat-new<CR>", { noremap = true, silent = true })
+            -- toggle chat window
+            vim.api.nvim_set_keymap("n", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
+            vim.api.nvim_set_keymap("v", "<leader>at", ":Augment chat-toggle<CR>", { noremap = true, silent = true })
+        end,
+    },
 }
