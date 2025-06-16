@@ -25,8 +25,8 @@ vim.api.nvim_set_keymap("n", "<S-Right>", "zL", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<S-Left>", "zH", { noremap = true, silent = true }) -- Scroll left
 
 -- move line in visual mode
-vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<leader>k", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "<leader>j", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "<leader>k", ":m '<-2<CR>gv=gv")
 
 -- for move forward with ctrl + i
 vim.keymap.set("n", "<C-l>", "<C-i>", { desc = "Jump forward in the jump list" })

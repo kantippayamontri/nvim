@@ -2,6 +2,17 @@
 require("config.lazy")
 
 -- for theme
+-- vim.cmd.colorscheme("nightfox") -- for nightfox theme
+-- vim.cmd.colorscheme("dayfox") -- for  nightfox theme
+-- vim.cmd.colorscheme("dawnfox") -- for  nightfox theme
+-- vim.cmd.colorscheme("duskfox") -- for  nightfox theme
+-- vim.cmd.colorscheme("nordfox") -- for  nightfox theme
+-- vim.cmd.colorscheme("terafox") -- for  nightfox theme
+-- vim.cmd.colorscheme("carbonfox") -- for
+-- vim.cmd.colorscheme("tokyonight-night") -- for tokyonight theme
+-- vim.cmd.colorscheme("tokyonight-storm") -- for tokyonight theme
+-- vim.cmd.colorscheme("tokyonight-day") -- for tokyonight theme
+-- vim.cmd.colorscheme("tokyonight-moon") -- for tokyonight theme
 -- vim.cmd.colorscheme("catppuccin-latte") -- for catppuccin theme
 vim.cmd.colorscheme("catppuccin-mocha") -- for catppuccin theme
 -- vim.cmd.colorscheme("edge") -- for edge theme
