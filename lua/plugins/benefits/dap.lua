@@ -3,6 +3,13 @@ return {
     "williamboman/mason.nvim",
     "mfussenegger/nvim-dap",
     "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    opts = {
+      handlers = {},
+      ensure_installed = {
+        "codelldb",
+      },
+    },
     config = function()
       require("mason").setup()
       require("mason-nvim-dap").setup({
