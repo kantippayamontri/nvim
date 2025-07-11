@@ -1,19 +1,24 @@
 return {
   {
+    -- show float signature in insert mode
+    -- https://github.com/ray-x/lsp_signature.nvim
+    "ray-x/lsp_signature.nvim",
+    enabled = false,
+    event = "InsertEnter",
+    opts = {
+      -- cfg options
+      bind = true,
+      handler_opts = {
+        border = "rounded",
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
 
     -- example using `opts` for defining servers
     opts = {
-      ensure_installed = {
-        "lua_ls", -- lua lsp servers
-        "pyright", -- python lsp servers
-        "ruff", -- python lsp servers
-        "dockerls", -- docker lsp servers
-        "docker_compose_language_service", -- docker compose lsp servers
-        "nginx_language_server", -- nginx lsp servers
-        "bashls", -- bash lsp servers
-      },
       servers = {
         lua_ls = {}, -- lua lsp servers
         pyright = {
