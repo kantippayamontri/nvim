@@ -45,6 +45,7 @@ return {
                     lua = { "stylua" },
                     docker = { "dockerls" },
                     sh = { "shfmt" },
+                    cpp = { "clang_format" },
                     -- python = { "ruff" },
                     --
                     -- python = function(bufnr)

@@ -50,7 +50,7 @@ vim.g.lazyvim_python_ruff = "ruff"
 
 -- for augment ai
 _G.augment_workspace_folders =
-{ "/home/kan/Work/Project/ABC_API/project/web", "/home/kan/Work/Project/serpapi_tutorial" }
+  { "/home/kan/Work/Project/ABC_API/project/web", "/home/kan/Work/Project/serpapi_tutorial" }
 -- vim.cmd("let g:augment_workspace_folders = ['/home/kan/Work/Project/ABC_API/project/web', '/home/kan/Work/Project/serpapi_tutorial']")
 
 -- for cursor size
@@ -60,39 +60,45 @@ vim.cmd([[
 
 -- for vim diagnostic
 vim.diagnostic.config({
-    -- virtual_text = true, -- Show diagnostics inline
-    virtual_text = {
-        prefix = "", -- Customize the marker
-        spacing = 2, -- 4 spaces between code and virtual text
-        -- suffix = " ⛺", -- Symbol after the message
-        format = function(diagnostic)
-            local show_text = "🔵"
-            local end_text = "⛺"
-            if diagnostic.severity == vim.diagnostic.severity.ERROR or string.find(diagnostic.message:lower(), "error", 1, true) then
-                show_text = "⛔"
-            elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-                show_text = "😭"
-            end
+  -- virtual_text = true, -- Show diagnostics inline
+  virtual_text = {
+    prefix = "", -- Customize the marker
+    spacing = 2, -- 4 spaces between code and virtual text
+    -- suffix = " ⛺", -- Symbol after the message
+    format = function(diagnostic)
+      local show_text = "🔵"
+      local end_text = "⛺"
+      if
+        diagnostic.severity == vim.diagnostic.severity.ERROR
+        or string.find(diagnostic.message:lower(), "error", 1, true)
+      then
+        show_text = "⛔"
+      elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+        show_text = "😭"
+      end
 
-            if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
-                return ""
-            end
-            return string.format("%s  %s %s", show_text, diagnostic.message, end_text)
-        end,
+      if diagnostic.source == "Ruff" then --fix for ruff show diagnostic for "ruff" and "Ruff" same text -> show only ruff
+        return ""
+      end
+      return string.format("%s  %s %s", show_text, diagnostic.message, end_text)
+    end,
+  },
+  -- signs = true, -- Show signs in the gutter
+  signs = {
+    active = true,
+    values = {
+      { name = "DiagnosticSignError", text = "✘" },
+      { name = "DiagnosticSignWarn", text = "▲" },
+      { name = "DiagnosticSignInfo", text = "ℹ" },
+      { name = "DiagnosticSignHint", text = "➤" },
     },
-    -- signs = true, -- Show signs in the gutter
-    signs = {
-        active = true,
-        values = {
-            { name = "DiagnosticSignError", text = "✘" },
-            { name = "DiagnosticSignWarn", text = "▲" },
-            { name = "DiagnosticSignInfo", text = "ℹ" },
-            { name = "DiagnosticSignHint", text = "➤" },
-        },
-    },
-    update_in_insert = false, -- Don’t update diagnostics while typing
-    severity_sort = true,   -- Sort by severity
-    float = {
-        border = "single",  -- Optional: rounded borders for floating diagnostics
-    },
+  },
+  update_in_insert = false, -- Don’t update diagnostics while typing
+  severity_sort = true, -- Sort by severity
+  float = {
+    border = "single", -- Optional: rounded borders for floating diagnostics
+  },
 })
+
+-- for c++
+vim.keymap.set("n", "<leader>cc", ":w<CR>:!clang++ % -o %:r && ./%:r<CR>", { noremap = true, silent = true })

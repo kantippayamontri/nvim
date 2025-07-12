@@ -5,7 +5,7 @@ return {
     -- or
     {
       "akinsho/toggleterm.nvim",
-            enabled = false,
+            enabled = true,
       version = "*",
       opts = {--[[ things you want to change go here]]
       },
@@ -18,7 +18,7 @@ return {
         end
         require("toggleterm").setup({
           size = 20,
-          open_mapping = [[<C-I>]],
+          open_mapping = [[<C-i>]],
           direction = "float",
           float_opts = {
             border = "curved",

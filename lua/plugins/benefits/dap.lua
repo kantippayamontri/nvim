@@ -3,6 +3,7 @@ return {
     "williamboman/mason.nvim",
     "mfussenegger/nvim-dap",
     "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
     config = function()
       require("mason").setup()
       require("mason-nvim-dap").setup({
@@ -22,6 +23,7 @@ return {
           -- 'delve',
           -- Add your own debuggers here
           "debugpy",
+          "codelldb",
         },
       })
     end,

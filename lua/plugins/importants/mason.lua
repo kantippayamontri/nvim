@@ -41,6 +41,7 @@ return {
           "dockerls",
           "nginx_language_server",
           "yamlls", -- yaml language server
+          "clangd", -- c/c++ lsp servers
         },
         opts = {
           auto_install = true,
@@ -59,6 +60,8 @@ return {
           "eslint_d", -- js linter
           "djlint", -- for flask and django template linting
           "yamllint", -- for yaml linting
+          "clang-format", -- c/c++ formatters
+          "codelldb", -- c/c++ code analysis(debugger)
         },
       })
     end,
