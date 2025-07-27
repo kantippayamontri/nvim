@@ -11,9 +11,10 @@ return {
         typescriptreact = { "eslint_d" },
         svelte = { "eslint_d" },
         python = { "ruff" },
-        html = { "eslint_d" },
+        html = { "htmlhint" },
         dockerfile = { "hadolint" },
         sh = { "shellcheck" },
+        cpp = { "cpplint" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

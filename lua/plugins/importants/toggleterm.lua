@@ -5,7 +5,7 @@ return {
     -- or
     {
       "akinsho/toggleterm.nvim",
-            enabled = true,
+            enabled = false,
       version = "*",
       opts = {--[[ things you want to change go here]]
       },

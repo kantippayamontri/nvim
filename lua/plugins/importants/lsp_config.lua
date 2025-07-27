@@ -53,12 +53,16 @@ return {
           -- end,
           on_attach = function(client, bufnr) end,
         },
-        -- docker
-        dockerls = {},
+
+        dockerls = {}, -- docker
+        eslint = {}, -- javascript
+        ts_ls = {}, -- typescript
+        html = {}, -- html
         docker_compose_language_service = {},
         nginx_language_server = {},
         bashls = {},
-        clangd = {},
+        clangd = {}, -- c/c++
+        cssls = {}, -- css
       },
     },
     config = function(_, opts)

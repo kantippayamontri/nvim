@@ -42,10 +42,22 @@ return {
           "nginx_language_server",
           "yamlls", -- yaml language server
           "clangd", -- c/c++ lsp servers
+          "html",
+          "cssls",
+          "tailwindcss",
+          "emmet_ls",
+          "eslint",
         },
         opts = {
           auto_install = true,
         },
+      })
+
+      local lspconfig = require("lspconfig")
+      -- Emmet
+      lspconfig.emmet_ls.setup({
+        capabilities = capabilities,
+        filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
       })
 
       local mason_tool_installer = require("mason-tool-installer")
@@ -61,6 +73,7 @@ return {
           "djlint", -- for flask and django template linting
           "yamllint", -- for yaml linting
           "clang-format", -- c/c++ formatters
+          "cpplint", -- c/c++ linter
           "codelldb", -- c/c++ code analysis(debugger)
         },
       })
