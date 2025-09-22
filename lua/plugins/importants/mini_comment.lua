@@ -7,7 +7,7 @@ return {
     },
   },
   {
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     event = "VeryLazy",
     opts = {
       options = {

@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     "mfussenegger/nvim-dap",
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
@@ -36,7 +36,7 @@ return {
       "nvim-neotest/nvim-nio",
       "theHamsta/nvim-dap-virtual-text",
       -- Installs the debug adapters for you
-      "williamboman/mason.nvim",
+      "nvim-mini/mason.nvim",
       "jay-babu/mason-nvim-dap.nvim",
       "mfussenegger/nvim-dap-python",
     },

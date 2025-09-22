@@ -3,7 +3,7 @@ return {
   { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     dependencies = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
@@ -24,7 +24,7 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     lazy = false,
     opts = {
       auto_install = true,

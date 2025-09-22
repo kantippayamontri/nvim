@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     version = "*",
     config = function()
       require("mini.splitjoin").setup()
